@@ -5,8 +5,8 @@ SECAD is a deep learning framework for **serous effusion cytology image analysis
 
 ## Requirements
 
-- Python 3.8+ (recommended)
-- PyTorch (CUDA recommended)
+- Python >= 3.8 (recommended)
+- PyTorch >= 1.10 (CUDA recommended)
 
 ## Evaluation scripts
 
@@ -46,6 +46,53 @@ Run:
 
 ```bash
 python tests/test_patch.py
+```
+
+## Training scripts
+
+### `train_baseline2.py` (Patch-Level Training)
+
+This script trains a patch-level image classifier using image patches and optional XML annotations.
+
+Data Required:
+- Patch image folder
+- XML annotation folder
+
+How to use:
+
+Set paths in training script:
+   - train_data
+   - train_xml
+   - val_data
+   - val_xml
+   - checkpoint_dir
+
+Run:
+
+```bash
+python train_patch.py
+```
+
+### `train_wsi.py` (Slide-Level Training)
+
+This script trains a slide-level classifier using pre-extracted feature maps (.pkl files).
+
+Data Required:
+- CSV file (slide id, label, feature reference)
+- Feature `.pkl` files directory
+
+How to use:
+
+Set paths in training script:
+   - train_csv
+   - val_csv
+   - pkl_root
+   - checkpoint_dir
+
+Run:
+
+```bash
+python train_wsi.py
 ```
 
 ## Notes
